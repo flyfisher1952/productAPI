@@ -50,4 +50,21 @@ router.post("/", (req, resp) => {
     });
 });
 
+router.put("/", (req, resp) => {
+    var id = req.body.id;
+    var name = req.body.name;
+    var price = req.body.price;
+
+    var sql = "update product set name='" + name + "' price=,'" + price;
+    console.log("*** " + sql + " ***");
+
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.error("Insert Error - ", err);
+        } else {
+            resp.send({ insert: "success" });
+        }
+    });
+});
+
 module.exports = router;
