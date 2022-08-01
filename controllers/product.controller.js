@@ -55,14 +55,24 @@ router.put("/", (req, resp) => {
     var name = req.body.name;
     var price = req.body.price;
 
-    var sql = "update product set name='" + name + "' price=,'" + price;
+    var sql = "update product set name='" + name + "', price=" + price + " where id=" + id;
     console.log("*** " + sql + " ***");
 
     connection.query(sql, (err, result) => {
         if (err) {
-            console.error("Insert Error - ", err);
+            console.error("Update Error - ", err);
         } else {
-            resp.send({ insert: "success" });
+            resp.send({ update: "success" });
+        }
+    });
+});
+
+router.delete("/:id", (req, resp) => {
+    connection.query("delete from product where id=" + req.params.id, (err, records, fields) => {
+        if (err) {
+            console.error("Error - ", err);
+        } else {
+            resp.send({ delete: "success" });
         }
     });
 });
