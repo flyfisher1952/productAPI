@@ -6,9 +6,12 @@ var bodyparser = require("body-parser");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
+var cors = require("cors");
+app.use(cors());
+
 var productAPI = require("./controllers/product.controller");
 
 app.use("/api/products", productAPI);
-app.listen(8080);
+app.listen(8085);
 
-console.log("Product API listening on 8080");
+console.log("Product API listening on 8085");

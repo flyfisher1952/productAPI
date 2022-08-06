@@ -9,3 +9,5 @@ insert into product values (6, 'Samsung J22', 'Good', 100);
 select * from product order by id;
 /* https://github.com/flyfisher1952/productAPI.git */
 delete from product where id=5 and price=699;
+
+update product set name='notepad', description='cheap', price=2 where id=11;
